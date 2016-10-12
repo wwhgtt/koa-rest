@@ -43,3 +43,7 @@ HEAD / -> HTTP headers only, no body.
 TRACE / -> Blocked for security reasons.
 
 ```
+启动项目需要用到mongodb  先安装mongodb 
+进入mongodb安装目录的bin   执行./mongod
+重新打开一个终端 在bin目录下执行./mongo
+推荐mongodb的可视化工具robomongo
