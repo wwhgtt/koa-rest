@@ -3,10 +3,28 @@ var views = require('co-views');
 var parse = require('co-body');
 var monk = require('monk');
 var wrap = require('co-monk');
+// mongodb generator goodness for co
 var db = monk('localhost/library');
+// Monk is a tiny layer that provides simple yet substantial usability improvements for MongoDB usage within Node.JS.
+// const db = require('monk')('localhost/mydb')
+// const users = db.get('users')
+//
+// users.index('name last')
+// users.insert({ name: 'Tobi', bigdata: {} })
+// users.find({ name: 'Loki' }, '-bigdata').then(function () {
+//   // exclude bigdata field
+// })
+// users.find({}, {sort: {name: 1}}).then(function () {
+//   // sorted by name field
+// })
+// users.remove({ name: 'Loki' })
+//
+// db.close()
+
 var co = require('co');
 
 var books = wrap(db.get('books'));
+// Call wrap() on collections to make them generator friendly
 
 // From lifeofjs
 co(function * () {
