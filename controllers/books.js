@@ -22,7 +22,7 @@ var db = monk('localhost/library');
 // db.close()
 
 var co = require('co');
-
+// Generator based control flow goodness for nodejs and the browser, using promises, letting you write non-blocking(无阻塞) code in a nice-ish way.
 var books = wrap(db.get('books'));
 // Call wrap() on collections to make them generator friendly
 
@@ -77,6 +77,7 @@ module.exports.add = function * add(data,next) {
     limit: '1kb'
   });
   var inserted = yield books.insert(book);
+  // insert是数据库操作 monk用语
   if (!inserted) {
     this.throw(405, "The book couldn't be added.");
   }
